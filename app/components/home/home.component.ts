@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
     selector: "Home",
@@ -7,11 +8,27 @@ import { Component, OnInit } from "@angular/core";
 })
 export class HomeComponent implements OnInit {
 
-    constructor() {
+    constructor(private router: Router) {
         // Use the component constructor to inject providers.
     }
 
     ngOnInit(): void {
         // Init your component properties here.
+    }
+
+    onPartidasTap(): void{
+        this.router.navigate(["/partidas"]);
+    }
+
+    onLudotecaTap(): void{
+        this.router.navigate(["/partidas"]);
+    }
+
+    onPerfilTap(): void{
+        this.router.navigate(["/perfil"]);
+    }
+
+    onLocalizacionTap(): void{
+        this.router.navigate(["/localizacion"]);
     }
 }

@@ -1,9 +1,10 @@
-export class juego{
+import { Kinvey } from 'kinvey-nativescript-sdk';
+export class Juego implements Kinvey.Entity {
     constructor(
-        id: number,
-        titulo: string,
-        jugadores: number,
-        disponible: boolean,
-        fechaAlta: string,
-        fechaBaja: string ){}
+        public _id: string,
+        public titulo: string,
+        public jugadores: number,
+        public disponible: boolean,
+        public fechaAlta: string,
+        public fechaBaja: string){}
 }

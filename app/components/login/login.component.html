@@ -3,12 +3,12 @@
 </ActionBar>
 <ScrollView>
     <StackLayout class="page p-t-15">
-        <!--FacebookLoginButton (login)="onLoginWithFacebook($event)"></FacebookLoginButton>
-        
-        <Label class="m-t-10 text-center" text="or"></Label-->
+        <Image src="res://logo_transparente"
+        stretch = "none"
+        class = "logo" ></Image>
 
-        <TextField class="input-text" hint="Email Address" keyboardType="email" autocorrect="false" autocapitalization="none"
-            [(ngModel)]="email"></TextField>
+        <TextField class="input-text" hint="Email Address" keyboardType="email" autocorrect="false" 
+            autocapitalization="none" [(ngModel)]="email"></TextField>
         <TextField class="input-text" hint="Password" secure="true" autocorrect="false" autocapitalization="none"
             [(ngModel)]="password"></TextField>
 

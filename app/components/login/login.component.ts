@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
     onSigninButtonTap(): void {
         const email = this.email;
         const password = this.password;
+        this.router.navigate(["/home"]);
         
     }
 

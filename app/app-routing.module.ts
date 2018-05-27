@@ -16,7 +16,7 @@ const routes: Routes = [
     { path: "", component: LoginComponent},
     { path: "home", component: HomeComponent },
     { path: "signUp", component: SignUpComponent},
-    { path: "usuario", component: PerfilComponent},
+    { path: "perfil", component: PerfilComponent},
     { path: "partidas", component: PartidasYEventosComponent,
         children: [
             { path: '', redirectTo: 'overview', pathMatch: 'full'},
