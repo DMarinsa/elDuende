@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { HttpClient } from '@angular/common/http'
+import { Usuario } from "~/dataModels/usuario";
+import { Kinvey } from "kinvey-nativescript-sdk";
 
 /* ***********************************************************
 * Before you can navigate to this page from your app, you need to reference this page's module in the
@@ -16,17 +19,17 @@ export class SignUpComponent implements OnInit {
     name: string;
     email: string;
     password: string;
+    repeat: string;
+    usuariosCollection: any;
+    activeUser: any;
+    usuario: Usuario;
 
     constructor() {
-        /* ***********************************************************
-        * Use the constructor to inject app services that you need in this component.
-        *************************************************************/
+        this.usuario = new Usuario();
     }
 
     ngOnInit(): void {
-        /* ***********************************************************
-        * Use the "ngOnInit" handler to initialize data for this component.
-        *************************************************************/
+        this.usuariosCollection = Kinvey.DataStore.collection('usuarios');
     }
 
     onSignupWithSocialProviderButtonTap(): void {
@@ -37,13 +40,34 @@ export class SignUpComponent implements OnInit {
         *************************************************************/
     }
 
-    onSignupButtonTap(): void {
+    async onSignupButtonTap(): Promise<void> {
         const name = this.name;
         const email = this.email;
         const password = this.password;
-
-        /* ***********************************************************
-        * Call your custom signup logic using the email and password data.
-        *************************************************************/
+        const fecha = new Date().toLocaleDateString();
+        const usuarioActivo = Kinvey.User.getActiveUser();
+        const usuarioRegistrar = {
+            _id: email,
+            nombre: name,
+            password: password,
+            fechaAlta: fecha
+        }
+            const usuario = Kinvey.User.signup()
+            .then(function(user){
+                const guardar = this.usuariosCollection.save(usuarioRegistrar)
+                    .catch(function(error: Kinvey.BaseError){
+                        console.log(error);
+                    });
+                Kinvey.User.signup(usuarioRegistrar)
+                    .catch(function(error) {
+                        console.log(error)});
+            }).catch(function(error) {
+                console.log(error);
+            })
+            this.usuariosCollection.save()
+                .catch( function onError(e){
+                    console.log('error al registrar')
+                    console.log(e.error)
+                });
     }
 }

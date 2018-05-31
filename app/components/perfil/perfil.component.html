@@ -1,6 +1,34 @@
 <ActionBar class="action-bar">
-    <Label class="action-bar-title" text="Home"></Label>
+    <Label class="action-bar-title" text="Perfil"></Label>
 </ActionBar>
-
-<StackLayout class="page">
-</StackLayout>
+<GridLayout rows="auto,*,auto">
+    <StackLayout cssClass="top-border" row="0"></StackLayout>
+	<ScrollView row="1" cssClass="fields-section">
+            <!--USUARIO-->
+            <GridLayout ios:columns="auto,*" android:rows="auto, auto" verticalAlignment="top">
+                <Label text="Usuario" cssClass="field-title"></Label>
+                <TextView class="text" text="{{ username }}" 
+                cssClass="field" ios:col="1" android:row="1" tap="onTextInputTapped"></TextView>
+            </GridLayout> 
+            <StackLayout cssClass="line"></StackLayout>
+            <!--EMAIL-->
+            <GridLayout ios:columns="auto,*" android:rows="auto, auto" verticalAlignment="top">
+                <Label text="Correo Electrónico" cssClass="field-title"></Label>
+                <TextView class="text" text="{{ email }}" 
+                cssClass="field" ios:col="1" android:row="1" tap="onTextInputTapped"></TextView>
+            </GridLayout> 
+            <StackLayout cssClass="line"></StackLayout>
+            <!--FECHA REGISTRO-->
+            <GridLayout ios:columns="auto,*" android:rows="auto, auto" verticalAlignment="top">
+                <Label text="Fecha de registro" cssClass="field-title"></Label>
+                <TextView class="text" text="{{ fechaAlta }}" 
+                cssClass="field" ios:col="1" android:row="1" tap="onTextInputTapped"></TextView>
+            </GridLayout> 
+            <StackLayout cssClass="line"></StackLayout>
+            <!--BORRAR REGISTRO-->
+            <GridLayout ios:columns="auto,*" android:rows="auto, auto" verticalAlignment="top">
+                <Button class="btn btn-primary" text="Eliminar tu cuenta" (tap)="onDeleteButtonTap()"></Button>
+            </GridLayout>
+            <StackLayout cssClass="line"></StackLayout>
+    </ScrollView>
+</GridLayout>
