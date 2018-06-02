@@ -1,10 +1,23 @@
-<ActionBar class="action-bar">
-    <Label class="action-bar-title" text="Home"></Label>
+<ActionBar class="action-bar" title="Home - El Duende" android.icon="res://logo_action_bar" android.iconVisibility="always">
+    <NavigationButton icon="res://purple_arrow" (tap)="goBack()"></NavigationButton>
 </ActionBar>
-
 <GridLayout class="page" columns="*, *" rows="*, *">
-    <Label text="Partidas y Eventos" row="0" col="0" backgroundColor="red" (tap)="onPartidasTap()"></Label>
-    <Label text="Ludoteca" row="0" col="1"backgroundColor="green" (tap)="onLudotecaTap()"></Label>
-    <Label text="Perfil" row="1" col="0"backgroundColor="blue" (tap)="onPerfilTap()"></Label>
-    <Label text="Donde Encontrarnos" row="1" col="1" backgroundColor="yellow" (tap)="onLocalizacionTap()"></Label>
+    <StackLayout class="home-item item-top" row="0" col="0">
+            <Image class="home-item" src="res://eventos" (tap)="onPartidasTap()"> </Image>
+            <Label class="home-item home-label" text="Partidas y Eventos" (tap)="onPartidasTap()"></Label>
+    </StackLayout>
+    <StackLayout class="home-item item-top" row="0" col="1">
+            <Image class="home-item" src="res://ludoteca" (tap)="onLudotecaTap()" stretch="aspectFit"></Image>
+            <Label class="home-item home-label" text="Ludoteca" row="0" col="1" (tap)="onLudotecaTap()"></Label>
+    </StackLayout>
+    <StackLayout class="home-item item-bottom" row="1" col="0">
+            <Image class="home-item" src="res://meeple_perfil" (tap)="onPerfilTap()"> </Image>
+            <Label class="home-item home-label" text="Perfil" (tap)="onPerfilTap()"></Label>
+    </StackLayout>
+    <StackLayout class="home-item item-bottom" row="1" col="1">
+            <Image class="home-item" src="res://maps" (tap)="onPartidasTap()"> </Image>
+            <Label class="home-item home-label" text="Donde Encontrarnos" (tap)="onLocalizacionTap()"></Label>
+    </StackLayout>
+    
+    
 </GridLayout>

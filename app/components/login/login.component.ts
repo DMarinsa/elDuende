@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import * as Facebook from 'nativescript-facebook';
 import { Router } from "@angular/router";
+import { prompt } from "ui/dialogs";
+import { Kinvey } from "kinvey-nativescript-sdk";
 /* ***********************************************************
 * Before you can navigate to this page from your app, you need to reference this page's module in the
 * global app router module. Add the following object to the global array of routes:
@@ -29,14 +30,6 @@ export class LoginComponent implements OnInit {
         *************************************************************/
     }
 
-    onLoginWithFacebook(eventData: Facebook.LoginEventData) {
-        if (eventData.error) {
-            alert("Error during login: " + eventData.error);
-        } else {
-            console.log(eventData.loginResponse.token);
-        }
-    }
-
     onSigninButtonTap(): void {
         const email = this.email;
         const password = this.password;
@@ -48,7 +41,22 @@ export class LoginComponent implements OnInit {
         this.router.navigate(["/signUp"]);
     }
 
-    onForgotPasswordTap(): void {
-        this.router.navigate(["/password"]);
-    }
+    onForgotPasswordTap() : void{
+        prompt({
+            title: "Contraseña Olvidada",
+            message: "Introduce el correo electrónico que usaste para registrarte",
+            defaultText: "",
+            okButtonText: "Ok",
+            cancelButtonText: "Cancel"
+          }).then((data) => {
+            if (data.result) {
+              Kinvey.User.resetPassword(data.text.trim())
+                .then(() => {
+                  alert("Se han enviado instrucciones para resetear su contraseña al correo electrónico");
+                }, () => {
+                  alert("Ha ocurrido un error inesperado");
+                });
+            }
+          });
+      }
 }

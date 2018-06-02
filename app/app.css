@@ -1,9 +1,8 @@
-/*
-In NativeScript, the app.css file is where you place CSS rules that
-you would like to apply to your entire application. Check out
-http://docs.nativescript.org/ui/styling for a full list of the CSS
-selectors and properties you can use to style UI components.
-
+/**
+* Importamos las fuentes
+*/
+@import url('./tools/assets/fonts/Atlantic_Cruise-Demo.ttf');
+@import url('./tools/assets/fonts/BebasKai-Regular.otf');
 /*
 In many cases you may want to use the NativeScript core theme instead
 of writing your own CSS rules. For a full list of class names in the theme
@@ -15,3 +14,72 @@ refer to http://docs.nativescript.org/ui/theme.
 For example, the following CSS rule changes the font size of all UI
 components that have the btn class name.
 */
+*{
+    background-color: #FEE600;
+    margin: 0;
+    padding: 0;
+    font-family: 'BabasKai-Regular';
+}
+
+TextField {
+    padding: 10;
+    color: black;
+    font-size: 20;
+    border-bottom-width: 1px;
+    border-color: black;
+    text-align: left;
+}
+
+.txt-pass {
+    background-color: white;
+    color: black;
+    text-transform: uppercase;
+}
+
+.action-bar{
+    background-color: #FEE600;
+    color: #34005C;
+}
+.logo{
+    background-color: #FEE600;
+    padding: 0 50% 0 50%;
+}
+.btn{
+  font-family: 'Atlantic_Cruise-Demo';
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  text-align: center;
+  background: #34005C;
+}
+.btn:highlitened{
+    background: #5AB119;
+    color: #34005C;
+}
+.form{
+    background-color: white;
+    border-width: 5px;
+    border-color: black;
+}
+
+.input-text{
+    padding: 5px;
+    margin: 5px;
+    background-color: white;
+    text-align: left;
+    color:black;
+}
+.home-item{
+    background: white;
+}
+.item-top{
+    padding-top: 100px;
+}
+.item-bottom{
+    padding-bottom: 20px;
+}
+.home-label{
+    text-align: center;
+    font-family: 'Atlantic_Cruise-Demo';
+    color: black;
+}

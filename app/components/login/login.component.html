@@ -1,20 +1,21 @@
-<ActionBar class="action-bar">
-    <Label class="action-bar-title" text="Login"></Label>
+<ActionBar class="action-bar" title="Login - El Duende" android.icon="res://logo_action_bar" android.iconVisibility="always">
+    <NavigationButton icon="res://purple_arrow" [visibility]="false"></NavigationButton>
 </ActionBar>
 <ScrollView>
     <StackLayout class="page p-t-15">
         <Image src="res://logo_transparente"
-        stretch = "none"
-        class = "logo" ></Image>
+            stretch = "aspectFit"
+            class = "logo"></Image>
+        <StackLayout class="form">
+            <TextField class="input-text" hint="Email Address" keyboardType="email" autocorrect="false" 
+                autocapitalization="none" returnKeyType="next" [(ngModel)]="email"></TextField>
+            <TextField class="input-text" hint="Password" secure="true" autocorrect="false" autocapitalization="none"
+                [(ngModel)]="password"></TextField>
 
-        <TextField class="input-text" hint="Email Address" keyboardType="email" autocorrect="false" 
-            autocapitalization="none" [(ngModel)]="email"></TextField>
-        <TextField class="input-text" hint="Password" secure="true" autocorrect="false" autocapitalization="none"
-            [(ngModel)]="password"></TextField>
-
-        <Button class="btn btn-primary" text="SIGN IN" (tap)="onSigninButtonTap()"></Button>
-        <Button class="btn btn-primary" text="SIGN UP" (tap)="onSignUpButtonTap()"></Button>
-        <Label class="m-t-10 m-b-10 m-l-15 m-r-15" text="¿Has olvidado tu contraseña?" (tap)="onForgotPasswordTap()"></Label>
+            <Button class="btn btn-primary" text="Acceder" (tap)="onSigninButtonTap()"></Button>
+            <Button class="btn btn-primary" text="Registrarse" (tap)="onSignUpButtonTap()"></Button>
+            <Label class="txt-pass" text="¿Has olvidado tu contraseña?" (tap)="onForgotPasswordTap()"></Label>
+        </StackLayout>
     </StackLayout>
 </ScrollView>
 

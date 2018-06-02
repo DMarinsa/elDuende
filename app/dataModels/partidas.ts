@@ -7,5 +7,6 @@ export class Partida implements Kinvey.Entity {
     public fecha: Date,
     public juego: Juego,
     public jugadores: [Usuario],
+    public maxJugadores: number,
     public duracion?: number){}
 }

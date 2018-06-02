@@ -1,34 +1,42 @@
 <ActionBar class="action-bar">
     <Label class="action-bar-title" text="Perfil"></Label>
 </ActionBar>
-<GridLayout rows="auto,*,auto">
+<StackLayout class="profile-container">
+    <Label text="Usuario"></Label>
+    <TextView class="text" text="{{ username }}" 
+      cssClass="field" ios:col="1" android:row="1"></TextView>
+    <Label text="Correo Electrónico"></Label>
+    <TextView class="text" text="{{ email }}" 
+      cssClass="field" ios:col="1" android:row="1"></TextView>
+    <Label text="Fecha de registro"></Label>
+    <TextView class="text" text="{{ fechaAlta }}" 
+      ios:col="1" android:row="1"></TextView>
+    <Button class="btn btn-primary" text="Eliminar tu cuenta" (tap)="onDeleteButtonTap()"></Button>
+</StackLayout>
+<!--GridLayout class="page" columns="*, *" rows="*, *">
     <StackLayout cssClass="top-border" row="0"></StackLayout>
-	<ScrollView row="1" cssClass="fields-section">
-            <!--USUARIO-->
-            <GridLayout ios:columns="auto,*" android:rows="auto, auto" verticalAlignment="top">
-                <Label text="Usuario" cssClass="field-title"></Label>
+	<ScrollView row="1" class="fields-section">
+            <GridLayout row="1" col="0">
+                <Label text="Usuario"></Label>
                 <TextView class="text" text="{{ username }}" 
-                cssClass="field" ios:col="1" android:row="1" tap="onTextInputTapped"></TextView>
+                cssClass="field" ios:col="1" android:row="1"></TextView>
             </GridLayout> 
-            <StackLayout cssClass="line"></StackLayout>
-            <!--EMAIL-->
+            <StackLayout  row="2" col="0" class="line"></StackLayout>
             <GridLayout ios:columns="auto,*" android:rows="auto, auto" verticalAlignment="top">
-                <Label text="Correo Electrónico" cssClass="field-title"></Label>
+                <Label text="Correo Electrónico"></Label>
                 <TextView class="text" text="{{ email }}" 
-                cssClass="field" ios:col="1" android:row="1" tap="onTextInputTapped"></TextView>
+                cssClass="field" ios:col="1" android:row="1"></TextView>
             </GridLayout> 
             <StackLayout cssClass="line"></StackLayout>
-            <!--FECHA REGISTRO-->
             <GridLayout ios:columns="auto,*" android:rows="auto, auto" verticalAlignment="top">
-                <Label text="Fecha de registro" cssClass="field-title"></Label>
+                <Label text="Fecha de registro"></Label>
                 <TextView class="text" text="{{ fechaAlta }}" 
-                cssClass="field" ios:col="1" android:row="1" tap="onTextInputTapped"></TextView>
+                  ios:col="1" android:row="1"></TextView>
             </GridLayout> 
             <StackLayout cssClass="line"></StackLayout>
-            <!--BORRAR REGISTRO-->
             <GridLayout ios:columns="auto,*" android:rows="auto, auto" verticalAlignment="top">
                 <Button class="btn btn-primary" text="Eliminar tu cuenta" (tap)="onDeleteButtonTap()"></Button>
             </GridLayout>
-            <StackLayout cssClass="line"></StackLayout>
+            <StackLayout class="line"></StackLayout>
     </ScrollView>
-</GridLayout>
+</GridLayout-->

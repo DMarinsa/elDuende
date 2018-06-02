@@ -8,15 +8,16 @@ import { PerfilComponent } from "~/components/perfil/perfil.component";
 import { PartidasYEventosComponent } from "~/components/partidasYEventos/partidasYEventos.component";
 import { PrestamosComponent } from "~/components/Prestamos/Prestamos.component";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
-import { ForgottenPasswordComponent } from "~/components/forgottenPassword/forgottenPassword.component";
 import { PartidaComponent } from "~/components/Partida/Partida.component";
 import { JuegoComponent } from "~/components/juego/juego.component";
+import { LocalizacionComponent } from "~/components/localizacion/localizacion.component";
 
 const routes: Routes = [
     { path: "", component: LoginComponent},
     { path: "home", component: HomeComponent },
     { path: "signUp", component: SignUpComponent},
     { path: "perfil", component: PerfilComponent},
+    { path: "localizacion", component: LocalizacionComponent},
     { path: "partidas", component: PartidasYEventosComponent,
         children: [
             { path: '', redirectTo: 'overview', pathMatch: 'full'},
@@ -28,8 +29,7 @@ const routes: Routes = [
             { path: '', redirectTo: 'overview', pathMatch: 'full'},
             { path: 'juego/:id', component: JuegoComponent}
         ]
-    },
-    { path: "password", component: ForgottenPasswordComponent}
+    }
 ];
 
 export const navigatableComponents = [
@@ -39,9 +39,9 @@ export const navigatableComponents = [
     PerfilComponent,
     PartidasYEventosComponent,
     PrestamosComponent,
-    ForgottenPasswordComponent,
     JuegoComponent,
-    PartidaComponent
+    PartidaComponent,
+    LocalizacionComponent
 ];
 
 @NgModule({

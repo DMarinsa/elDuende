@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { RouterExtensions } from "nativescript-angular/router";
 
 @Component({
     selector: "Home",
@@ -8,7 +9,8 @@ import { Router } from "@angular/router";
 })
 export class HomeComponent implements OnInit {
 
-    constructor(private router: Router) {
+    constructor(private router: Router,
+                private routerExtensions: RouterExtensions) {
         // Use the component constructor to inject providers.
     }
 
@@ -30,5 +32,9 @@ export class HomeComponent implements OnInit {
 
     onLocalizacionTap(): void{
         this.router.navigate(["/localizacion"]);
+    }
+
+    goBack(){
+        this.routerExtensions.backToPreviousPage();
     }
 }
