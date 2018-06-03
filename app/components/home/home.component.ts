@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     }
 
     onLudotecaTap(): void{
-        this.router.navigate(["/partidas"]);
+        this.router.navigate(["/prestamos"]);
     }
 
     onPerfilTap(): void{

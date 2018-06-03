@@ -1,8 +1,14 @@
+<ActionBar class="action-bar" title="Localizacion - El Duende" android.icon="res://logo_action_bar" android.iconVisibility="always">
+    <NavigationButton icon="res://purple_arrow" (tap)="goBack()"></NavigationButton>
+</ActionBar>
 <ScrollView>
-    <StackLayout>
-        <Label text="Encuentranos en:" class="message" textWrap="true"/>
-        <Label text="Calle Condes de la Concepcion, 40" class="message" textWrap="true"/>
-        <Label text="El Palmar, Murcia" class="message" textWrap="true"/>
-        <Button text="from current location to address" (tap)="centroJuvenil()" class="button" />
+    <StackLayout class="image-container">
+        <Image src="res://centro_juvenil" stretch="aspectFit"></Image>
+        <StackLayout class="form texto-localizacion">
+            <Label text="Encuentranos en:" class="texto-localizacion"></Label>
+            <Label text="Calle Condes de la Concepcion, 40" class="texto-localizacion"></Label>
+            <Label text="El Palmar, Murcia" class="texto-localizacion"></Label>
+            <Button text="Localizacion" (tap)="centroJuvenil()" class="btn"></Button>
+        </StackLayout>
     </StackLayout>
 </ScrollView>

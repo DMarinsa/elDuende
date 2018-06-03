@@ -1,19 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { Directions } from "nativescript-directions";
+import { RouterExtensions } from 'nativescript-angular/router';
 
 @Component({
 	selector: 'localizacion',
-	templateUrl: 'localizacion.component.html',
+  moduleId: module.id,
+	templateUrl: './localizacion.component.html',
+	styleUrls: ['./localizacion.component.css']
 })
 
 export class LocalizacionComponent implements OnInit {
-	directions: any;
-	constructor() { }
+	directions: Directions;
+	constructor(private routerExtensions: RouterExtensions) { 
+		this.directions = new Directions();
+	}
 
 	ngOnInit() {
-		this.directions = new Directions();
 	};
 
+	goBack(){
+        this.routerExtensions.backToPreviousPage();
+	}
+	
 	public centroJuvenil() {
 		this.directions.navigate({
 		  to: {
@@ -21,8 +29,8 @@ export class LocalizacionComponent implements OnInit {
 		  }
 		}).then(() => {
 		  console.log('Vamos al Centro Juvenil');
-		}, (err) => {
+		}).catch((err) => {
 		  alert(err);
 		});
-	  }
+	}
 }

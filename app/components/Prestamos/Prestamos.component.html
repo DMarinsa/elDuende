@@ -1,5 +1,8 @@
-<ActionBar class="action-bar">
-    <Label class="action-bar-title" text="Home"></Label>
+<ActionBar class="action-bar" title="Ludoteca - El Duende" android.icon="res://logo_action_bar" android.iconVisibility="always">
+    <NavigationButton icon="res://purple_arrow" (tap)="goBack()"></NavigationButton>
+    <ActionItem (tap)="addPartida()"
+      ios.systemIcon="16" ios.position="right"
+      android.position="actionBarIfRoom" icon="res://signo_mas"></ActionItem>
 </ActionBar>
 
 <StackLayout class="page">

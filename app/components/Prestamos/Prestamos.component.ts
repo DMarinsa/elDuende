@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { Kinvey } from "kinvey-nativescript-sdk";
+import { forEach } from "@angular/router/src/utils/collection";
 
 /* ***********************************************************
 * Before you can navigate to this page from your app, you need to reference this page's module in the
@@ -13,15 +15,18 @@ import { Component, OnInit } from "@angular/core";
     templateUrl: "./Prestamos.component.html"
 })
 export class PrestamosComponent implements OnInit {
+    Ludoteca: any;
+    listaJuegos: [object];
     constructor() {
-        /* ***********************************************************
-        * Use the constructor to inject app services that you need in this component.
-        *************************************************************/
+        this.Ludoteca= Kinvey.DataStore.collection('juegos', Kinvey.DataStoreType.Cache);
     }
 
     ngOnInit(): void {
-        /* ***********************************************************
-        * Use the "ngOnInit" handler to initialize data for this component.
-        *************************************************************/
+        this.Ludoteca.pull().then(function onSuccess(juegos){
+            juegos.forEach(function(juego){
+                this.listaJuegos.push(juego);
+                alert('Juegos Cargados')
+            });
+        }).catch((err) => alert(err.error));
     }
 }

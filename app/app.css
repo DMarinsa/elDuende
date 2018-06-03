@@ -1,19 +1,4 @@
-/**
-* Importamos las fuentes
-*/
-@import url('./tools/assets/fonts/Atlantic_Cruise-Demo.ttf');
-@import url('./tools/assets/fonts/BebasKai-Regular.otf');
-/*
-In many cases you may want to use the NativeScript core theme instead
-of writing your own CSS rules. For a full list of class names in the theme
-refer to http://docs.nativescript.org/ui/theme.
-*/
-@import '~nativescript-theme-core/css/core.light.css';
 
-/*
-For example, the following CSS rule changes the font size of all UI
-components that have the btn class name.
-*/
 *{
     background-color: #FEE600;
     margin: 0;
@@ -23,6 +8,7 @@ components that have the btn class name.
 
 TextField {
     padding: 10;
+    margin: 10;
     color: black;
     font-size: 20;
     border-bottom-width: 1px;
@@ -51,11 +37,10 @@ TextField {
   border-radius: 20px;
   text-align: center;
   background: #34005C;
+  padding: 10;
+  margin: 10px;
 }
-.btn:highlitened{
-    background: #5AB119;
-    color: #34005C;
-}
+
 .form{
     background-color: white;
     border-width: 5px;
@@ -82,4 +67,25 @@ TextField {
     text-align: center;
     font-family: 'Atlantic_Cruise-Demo';
     color: black;
+}
+
+.texto-localizacion {
+    font-family: 'BebasKai-Regular';
+    font-weight: bold;
+    font-size: 20;
+    background-color: white;
+}
+.image-container{
+    background-color: #FEE600;
+}
+
+.fab-container{
+    margin-top: 80%;
+    margin-left: 80%;
+}
+.fab-button{
+    height: 70;
+    width: 70;
+    margin: 15;
+    background-color: #ff4081;
 }
