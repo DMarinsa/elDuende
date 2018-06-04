@@ -1,21 +1,18 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
-
-import { SignUpRoutingModule } from "./signUp-routing.module";
-import { SignUpComponent } from "./signUp.component";
+import { LocalizacionComponent } from "./localizacion.component";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
 @NgModule({
     imports: [
         NativeScriptFormsModule,
-        NativeScriptModule,
-        SignUpRoutingModule
+        NativeScriptModule
     ],
     declarations: [
-        SignUpComponent
+        LocalizacionComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
     ]
 })
-export class SignUpModule { }
+export class LocalizacionModule { }

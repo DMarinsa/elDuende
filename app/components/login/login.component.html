@@ -7,12 +7,12 @@
             stretch = "aspectFit"
             class = "logo"></Image>
         <StackLayout class="form">
-            <TextField class="input-text" hint="Email Address" keyboardType="email" autocorrect="false" 
-                autocapitalization="none" returnKeyType="next" [(ngModel)]="email"></TextField>
-            <TextField class="input-text" hint="Password" secure="true" autocorrect="false" autocapitalization="none"
+            <TextField class="input-text" hint="Nombre de Usuario" autocorrect="false" 
+                autocapitalization="none" returnKeyType="next" [(ngModel)]="username"></TextField>
+            <TextField class="input-text" hint="Contraseña" secure="true" autocorrect="false" autocapitalization="none"
                 [(ngModel)]="password"></TextField>
 
-            <Button class="btn btn-primary" text="Acceder" (tap)="onSigninButtonTap()"></Button>
+            <Button class="btn btn-primary" text="Acceder" (tap)="onLoginButtonTap()"></Button>
             <Button class="btn btn-primary" text="Registrarse" (tap)="onSignUpButtonTap()"></Button>
             <Label class="txt-pass" text="¿Has olvidado tu contraseña?" (tap)="onForgotPasswordTap()"></Label>
         </StackLayout>

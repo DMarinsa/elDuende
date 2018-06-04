@@ -8,11 +8,11 @@
             class = "logo"></Image>
         <StackLayout class="form">
             <TextField class="input-text" hint="Nombre de Usuario" autocorrect="false" autocapitalization="none" 
-                [(ngModel)]="name"></TextField>
+                [(ngModel)]="usuarioRegistrar.username"></TextField>
             <TextField class="input-text" hint="Correo Electrónico" keyboardType="email" autocorrect="false" 
-                autocapitalization="none" [(ngModel)]="email"></TextField>
+                autocapitalization="none" [(ngModel)]="usuarioRegistrar.email"></TextField>
             <TextField class="input-text" hint="Contraseña" secure="true" autocorrect="false" 
-                autocapitalization="none" [(ngModel)]="password" ></TextField>
+                autocapitalization="none" [(ngModel)]="usuarioRegistrar.password" ></TextField>
             <Button class="btn btn-primary" text="Registrar" (tap)="onSignupButtonTap()"></Button>
         </StackLayout>
     </StackLayout>

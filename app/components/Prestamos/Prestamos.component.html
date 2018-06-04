@@ -4,6 +4,10 @@
       ios.systemIcon="16" ios.position="right"
       android.position="actionBarIfRoom" icon="res://signo_mas"></ActionItem>
 </ActionBar>
-
-<StackLayout class="page">
-</StackLayout>
+<GridLayout>
+  <ListView [items]="_Juego" class="lista-partidas" row="1">
+      <ng-template let-item="item">
+          <Label [text]="item.name" class="partida-item"></Label>
+      </ng-template>
+  </ListView>
+</GridLayout>

@@ -12,7 +12,7 @@ import { PartidaComponent } from "~/components/Partida/Partida.component";
 import { JuegoComponent } from "~/components/juego/juego.component";
 import { LocalizacionComponent } from "~/components/localizacion/localizacion.component";
 
-const routes: Routes = [
+export const routes: Routes = [
     { path: "", component: LoginComponent},
     { path: "home", component: HomeComponent },
     { path: "signUp", component: SignUpComponent},
@@ -49,10 +49,6 @@ export const navigatableComponents = [
         NativeScriptModule,
         NativeScriptRouterModule.forRoot(routes)
     ],
-    declarations: [
-        navigatableComponents
-    ],
-    bootstrap: [LoginComponent],
     exports: [NativeScriptRouterModule]
 })
 export class AppRoutingModule { }

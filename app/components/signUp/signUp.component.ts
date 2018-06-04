@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http'
 import { Usuario } from "~/dataModels/usuario";
 import { Kinvey } from "kinvey-nativescript-sdk";
 import { RouterExtensions } from "nativescript-angular/router";
+import { Router } from "@angular/router";
+import { TextField } from "ui/text-field";
 
 /* ***********************************************************
 * Before you can navigate to this page from your app, you need to reference this page's module in the
@@ -17,15 +19,14 @@ import { RouterExtensions } from "nativescript-angular/router";
     templateUrl: "./signUp.component.html"
 })
 export class SignUpComponent implements OnInit {
-    name: string;
-    email: string;
-    password: string;
-    repeat: string;
     usuariosCollection: any;
+    usuarioRegistrar: Usuario;
     activeUser: any;
 
     constructor(
+        private router: Router,
         private routerExtensions: RouterExtensions) {
+            this.usuarioRegistrar = new Usuario();
     }
 
     ngOnInit(): void {
@@ -45,38 +46,18 @@ export class SignUpComponent implements OnInit {
     }
 
     async onSignupButtonTap(): Promise<void> {
-        const name = this.name;
-        const email = this.email;
-        const password = this.password;
-        const fecha = new Date().toLocaleDateString();
         const usuarioActivo = Kinvey.User.getActiveUser();
-        const usuarioRegistrar = {
-            _id: email,
-            nombre: name,
-            password: password,
-            fechaAlta: fecha
-        }
+        this.usuarioRegistrar.fechaAlta=new Date().toLocaleDateString();
+        Kinvey.User.logout();
         const ActiveUser = Kinvey.User.getActiveUser();
-        const usuarioBaseDatos = new Usuario(this.email, this.name, this.password, fecha);
         if(!ActiveUser){
-            const usuario = Kinvey.User.signup()
-            .then(function(user){
-                const guardar = this.usuariosCollection.save(usuarioRegistrar)
-                    .catch(function(error: Kinvey.BaseError){
-                        alert(error);
-                    });
-                Kinvey.User.signup(usuarioRegistrar)
-                    .catch(function(error) {
-                        alert(error)});
-            }).catch(function(error) {
-                alert(error);
-            })
-        } else {
-            this.usuariosCollection.save('usuarios', usuarioBaseDatos)
-                .catch( function onError(e){
-                    alert('error al registrar')
-                    alert(e.error)
-                });
+            const usuario = Kinvey.User.signup(this.usuarioRegistrar)
+                .then(() => {
+                    alert('Registro realizado correctamente, volverás directamente a la pantalla de inicio');
+                    this.routerExtensions.backToPreviousPage();
+                }).catch(function(error) {
+                    alert(error.message);
+            });
         }
     }
 }

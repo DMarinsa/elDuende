@@ -1,13 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Kinvey } from "kinvey-nativescript-sdk";
 import { forEach } from "@angular/router/src/utils/collection";
-
-/* ***********************************************************
-* Before you can navigate to this page from your app, you need to reference this page's module in the
-* global app router module. Add the following object to the global array of routes:
-* { path: "Prestamos", loadChildren: "./Prestamos/Prestamos.module#PrestamosModule" }
-* Note that this simply points the path to the page module file. If you move the page, you need to update the route too.
-*************************************************************/
+import { Juego } from "~/dataModels/juego";
+import { ObservableArray } from "tns-core-modules/data/observable-array/observable-array";
 
 @Component({
     selector: "Prestamos",
@@ -16,17 +11,51 @@ import { forEach } from "@angular/router/src/utils/collection";
 })
 export class PrestamosComponent implements OnInit {
     Ludoteca: any;
-    listaJuegos: [object];
+    listaJuegos: Array<Juego>;
+    private _Juego: ObservableArray<Juego> = new ObservableArray<Juego>([]);
     constructor() {
-        this.Ludoteca= Kinvey.DataStore.collection('juegos', Kinvey.DataStoreType.Cache);
     }
 
     ngOnInit(): void {
-        this.Ludoteca.pull().then(function onSuccess(juegos){
-            juegos.forEach(function(juego){
-                this.listaJuegos.push(juego);
-                alert('Juegos Cargados')
-            });
-        }).catch((err) => alert(err.error));
+        Kinvey.User.getActiveUser();
+        this.Ludoteca = Kinvey.DataStore.collection('juegos', Kinvey.DataStoreType.Sync);
+        this.Ludoteca.pull()
+            .then((juegos) => {
+                alert(juegos);
+            }).catch((err)=>alert(err.message));
+        /*
+        this.Ludoteca.sync()
+            .then((juegos) => {
+                this.listaJuegos = juegos.pull;
+                alert(juegos.pull.length);
+            }) .then( (juego) => {
+                alert(juego);
+                this.listaJuegos = [];
+                juego.forEach((datosJuego: any) => {
+                    datosJuego.id = datosJuego._id;
+                    datosJuego.nombre = datosJuego.titulo;
+                    datosJuego.imagen = datosJuego.image;
+                    datosJuego.disponibilidad = datosJuego.disponible;
+                    const jueogPush = new Juego(datosJuego);
+                    this.listaJuegos.push(jueogPush);
+                })
+            }) .then((juegos: Array<Juego>) => {
+                this._Juego = new ObservableArray(juegos);
+            }) .catch((err)=> alert(err.message));
+        /* this.Ludoteca.pull()
+            .then( (juegos) => {
+                alert('pull')
+                alert(juegos)
+            }) .catch( (err) => alert(err.message));
+        const listaJuegos = this.Ludoteca.find()
+            .subscribe((juego) => {
+                alert('find')
+                alert(juego) 
+            }, (err) => {
+              alert(err.message)
+            }, () => {
+                
+            }); */
     }
+
 }

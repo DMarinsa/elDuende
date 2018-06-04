@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { prompt } from "ui/dialogs";
 import { Kinvey } from "kinvey-nativescript-sdk";
+import { connectionType, getConnectionType } from "connectivity";
 /* ***********************************************************
 * Before you can navigate to this page from your app, you need to reference this page's module in the
 * global app router module. Add the following object to the global array of routes:
@@ -15,7 +16,7 @@ import { Kinvey } from "kinvey-nativescript-sdk";
     templateUrl: "./login.component.html"
 })
 export class LoginComponent implements OnInit {
-    email: string;
+    username: string;
     password: string;
 
     constructor(private router: Router) {
@@ -25,15 +26,19 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        /* ***********************************************************
-        * Use the "ngOnInit" handler to initialize data for this component.
-        *************************************************************/
+        Kinvey.User.logout();
     }
 
-    onSigninButtonTap(): void {
-        const email = this.email;
-        const password = this.password;
-        this.router.navigate(["/home"]);
+    onLoginButtonTap(): void {
+        this.router.navigate(["/home"])
+        Kinvey.User.login(this.username, this.password)
+            .then(() => {
+                alert('Se ha logado correctamente') 
+                this.router.navigate(["/home"])
+            })
+            .catch(function(error) {
+                alert(error.message);
+            });
         
     }
 
