@@ -1,11 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-
-/* ***********************************************************
-* Before you can navigate to this page from your app, you need to reference this page's module in the
-* global app router module. Add the following object to the global array of routes:
-* { path: "Partida", loadChildren: "./Partida/Partida.module#PartidaModule" }
-* Note that this simply points the path to the page module file. If you move the page, you need to update the route too.
-*************************************************************/
+import { DatePicker } from "tns-core-modules/ui/date-picker/date-picker";
+import { ModalDialogParams } from "nativescript-angular/modal-dialog";
+import { Page } from "tns-core-modules/ui/page/page";
+import { Partida } from "~/dataModels/partidas";
+import { partidasMock } from '../../mocks/partidasMock'
 
 @Component({
     selector: "Partida",
@@ -13,15 +11,25 @@ import { Component, OnInit } from "@angular/core";
     templateUrl: "./Partida.component.html"
 })
 export class PartidaComponent implements OnInit {
-    constructor() {
-        /* ***********************************************************
-        * Use the constructor to inject app services that you need in this component.
-        *************************************************************/
+    public nuevaPartida: any;
+    public fechaActual: Date;
+    constructor(private params: ModalDialogParams, private page: Page) {
+        this.fechaActual = new Date(params.context);
+        this.page.on("unloaded", () => {
+            this.params.closeCallback();
+        });
     }
 
     ngOnInit(): void {
-        /* ***********************************************************
-        * Use the "ngOnInit" handler to initialize data for this component.
-        *************************************************************/
+        let datePicker: DatePicker = <DatePicker>this.page.getViewById<DatePicker>("datepicker");
+        datePicker.date= this.fechaActual;
+        datePicker.minDate = datePicker.date;
+    }
+
+    public anadirPartida() {
+        let fecha: DatePicker = <DatePicker>this.page.getViewById<DatePicker>("datepicker");
+        this.nuevaPartida.fecha = fecha.toLocaleString();
+        partidasMock.push(this.nuevaPartida)
+        this.params.closeCallback()
     }
 }

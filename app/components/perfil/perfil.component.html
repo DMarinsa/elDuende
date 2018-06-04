@@ -1,15 +1,16 @@
-<ActionBar class="action-bar">
-    <Label class="action-bar-title" text="Perfil"></Label>
+<ActionBar class="action-bar" title="Localizacion - El Duende" android.icon="res://logo_action_bar" android.iconVisibility="always">
+    <NavigationButton icon="res://purple_arrow" (tap)="goBack()"></NavigationButton>
 </ActionBar>
+
 <StackLayout class="profile-container">
-    <Label text="Usuario"></Label>
-    <TextView class="text" text="{{ username }}" 
-      cssClass="field" ios:col="1" android:row="1"></TextView>
-    <Label text="Correo Electrónico"></Label>
-    <TextView class="text" text="{{ email }}" 
-      cssClass="field" ios:col="1" android:row="1"></TextView>
-    <Label text="Fecha de registro"></Label>
-    <TextView class="text" text="{{ fechaAlta }}" 
+    <Label class="profile-label" text="Nombre de usuario"></Label>
+    <TextView text="{{ usuarioActivo.username }}" 
+      class="profile-field" ios:col="1" android:row="1"></TextView>
+    <Label class="profile-label" text="Correo Electrónico"></Label>
+    <TextView class="text" text="{{ usuarioActivo.email }}" 
+    class="profile-field" ios:col="1" android:row="1"></TextView>
+    <Label class="profile-label" text="Fecha de registro"></Label>
+    <TextView class="profile-field" text="{{ usuarioActivo.fechaAlta }}" 
       ios:col="1" android:row="1"></TextView>
     <Button class="btn btn-primary" text="Eliminar tu cuenta" (tap)="onDeleteButtonTap()"></Button>
 </StackLayout>

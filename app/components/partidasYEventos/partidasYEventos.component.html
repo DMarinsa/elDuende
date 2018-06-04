@@ -5,9 +5,13 @@
       android.position="actionBarIfRoom" icon="res://signo_mas"></ActionItem>
 </ActionBar>
 <GridLayout>
-<ListView [items]="partidas" class="lista-partidas" row="1">
+<ListView [items]="listaPartidas" class="lista-partidas" row="1">
     <ng-template let-item="item">
-        <Label [text]="item" class="partida-item"></Label>
+        <StackLayout class="partida-item">
+            <Label [text]="item.juego" class="partida-text partida-title"></Label>
+            <label [text]="item.fecha" class="partida-text"></label>
+            <label [text]="item.maxJugadores + ' jugadores como máximo'" class="partida-text"></label>
+        </StackLayout>
     </ng-template>
 </ListView>
 </GridLayout>

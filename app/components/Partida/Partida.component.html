@@ -1,0 +1,11 @@
+<ScrollView>
+    <StackLayout class="partida-modal">
+        <Label class="titulo-modal" text="Introduce una nueva partida"></Label>
+        <TextField class="input-modal" hint="Título del Juego" autocorrect="false" autocapitalization="none" 
+        [(ngModel)]="nuevaPartida.titulo"></TextField>
+        <DatePicker class="input-modal" id="datePicker" date="{{ date }}" minDate="{{ minDate }}"></DatePicker>
+        <TextField class="input-modal" hint="¿Máximo de jugadores?" keyBoardType="number"
+        [(ngModel)]="nuevaPartida.maxJugadores"></TextField>
+        <Button class="btn" text="Añadir Partida" (tap)="anadirPartida()"></Button>
+    </StackLayout>
+</ScrollView>

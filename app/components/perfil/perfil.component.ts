@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { RouterExtensions } from "nativescript-angular/router";
+import { Kinvey } from 'kinvey-nativescript-sdk';
+import { Usuario } from "~/dataModels/usuario";
 
 /* ***********************************************************
 * Before you can navigate to this page from your app, you need to reference this page's module in the
@@ -13,15 +16,16 @@ import { Component, OnInit } from "@angular/core";
     templateUrl: "./perfil.component.html"
 })
 export class PerfilComponent implements OnInit {
-    constructor() {
-        /* ***********************************************************
-        * Use the constructor to inject app services that you need in this component.
-        *************************************************************/
+    usuarioActivo: any;
+    constructor( private routerExtensions: RouterExtensions) {
+        this.usuarioActivo = Kinvey.User.getActiveUser();
     }
 
     ngOnInit(): void {
-        /* ***********************************************************
-        * Use the "ngOnInit" handler to initialize data for this component.
-        *************************************************************/
+        
+    }
+
+    goBack(){
+        this.routerExtensions.backToPreviousPage();
     }
 }

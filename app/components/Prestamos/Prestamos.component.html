@@ -1,13 +1,16 @@
 <ActionBar class="action-bar" title="Ludoteca - El Duende" android.icon="res://logo_action_bar" android.iconVisibility="always">
     <NavigationButton icon="res://purple_arrow" (tap)="goBack()"></NavigationButton>
-    <ActionItem (tap)="addPartida()"
-      ios.systemIcon="16" ios.position="right"
-      android.position="actionBarIfRoom" icon="res://signo_mas"></ActionItem>
 </ActionBar>
 <GridLayout>
-  <ListView [items]="_Juego" class="lista-partidas" row="1">
-      <ng-template let-item="item">
-          <Label [text]="item.name" class="partida-item"></Label>
-      </ng-template>
-  </ListView>
+    <ListView class="lista-partidas" [items]="listaJuegos"  separatorColor="black">
+        <ng-template let-item="item">
+            <GridLayout rows="* auto" columns="*" class="partida-item"> 
+                <Image row="0" col="0" [src]="item.image"></Image>
+                <StackLayout row="1" col="0" backgroundColor="white" class="list-group-item">
+                    <Label class="partida-text partida-title" [text]="item.titulo"></Label>
+                    <Label class="partida-text" [text]="'Disponible: '+item.disponible"></Label>      
+                </StackLayout>
+            </GridLayout>
+        </ng-template>
+    </ListView>
 </GridLayout>

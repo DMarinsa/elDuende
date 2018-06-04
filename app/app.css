@@ -79,13 +79,47 @@ TextField {
     background-color: #FEE600;
 }
 
-.fab-container{
-    margin-top: 80%;
-    margin-left: 80%;
+.partida-modal{
+    background-color: white;
+    color: black;
+    font-family: 'BebasKai-Regular';
 }
-.fab-button{
-    height: 70;
-    width: 70;
-    margin: 15;
-    background-color: #ff4081;
+
+.input-modal{
+    color:black;
+    padding: 3px;
+    margin: 3px;
+}
+.titulo-modal{
+    font-family: 'Atlantic_Cruise-Demo';
+    padding: 3px;
+    margin: 3px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.profile-container{
+    width: 80%;
+    height: 60%;
+    vertical-align: middle;
+    horizontal-align: center;
+    background-color: white;
+    border-radius: 12px;
+    border-width: 5px;
+    border-color: black;
+}
+.profile-label{
+    background-color:white;
+    color: black;
+    font-family: 'Atlantic_Cruise-Demo';
+    text-align: 'center';
+    padding: 5px;
+    margin: 5px;
+}
+.profile-field{
+    background-color:white;
+    color: black;
+    font-family: 'KebasKai-Regular';
+    padding: 5px;
+    margin: 5px;
 }

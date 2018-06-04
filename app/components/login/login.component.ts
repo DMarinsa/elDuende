@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
     }
 
     onLoginButtonTap(): void {
-        this.router.navigate(["/home"])
         Kinvey.User.login(this.username, this.password)
             .then(() => {
                 alert('Se ha logado correctamente') 

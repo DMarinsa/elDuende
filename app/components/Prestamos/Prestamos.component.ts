@@ -1,28 +1,31 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { Kinvey } from "kinvey-nativescript-sdk";
 import { forEach } from "@angular/router/src/utils/collection";
 import { Juego } from "~/dataModels/juego";
 import { ObservableArray } from "tns-core-modules/data/observable-array/observable-array";
+import { RouterExtensions } from "nativescript-angular/router";
+import { listajuegos } from '../../mocks/juegosMock';
 
 @Component({
     selector: "Prestamos",
     moduleId: module.id,
-    templateUrl: "./Prestamos.component.html"
+    templateUrl: "./Prestamos.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PrestamosComponent implements OnInit {
     Ludoteca: any;
-    listaJuegos: Array<Juego>;
-    private _Juego: ObservableArray<Juego> = new ObservableArray<Juego>([]);
-    constructor() {
+    listaJuegos: ObservableArray<any>;
+    constructor(private routerExtensions: RouterExtensions) {
+        this.listaJuegos = new ObservableArray(listajuegos)
     }
 
     ngOnInit(): void {
-        Kinvey.User.getActiveUser();
+        /*Kinvey.User.getActiveUser();
         this.Ludoteca = Kinvey.DataStore.collection('juegos', Kinvey.DataStoreType.Sync);
         this.Ludoteca.pull()
             .then((juegos) => {
-                alert(juegos);
             }).catch((err)=>alert(err.message));
+        */
         /*
         this.Ludoteca.sync()
             .then((juegos) => {
@@ -42,6 +45,7 @@ export class PrestamosComponent implements OnInit {
             }) .then((juegos: Array<Juego>) => {
                 this._Juego = new ObservableArray(juegos);
             }) .catch((err)=> alert(err.message));
+        */
         /* this.Ludoteca.pull()
             .then( (juegos) => {
                 alert('pull')
@@ -56,6 +60,10 @@ export class PrestamosComponent implements OnInit {
             }, () => {
                 
             }); */
+    }
+
+    goBack(){
+        this.routerExtensions.backToPreviousPage();
     }
 
 }

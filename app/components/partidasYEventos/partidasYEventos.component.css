@@ -1,10 +1,22 @@
 .lista-partidas{
     width: 100%;
     height: 100%;
+    background-color:white;
 }
 .partida-item{
-    height: 80;
+    height: 70;
     border-bottom-color: black;
     border-bottom-width: 1;
     color:black;
+    background-color:white;
+}
+.partida-text{
+    font-family: 'BebasKai-Regular';
+    font-size: 20;
+    padding: 5;
+    background-color:white;
+}
+.partida-title{
+    font-weight: bold;
+    background-color:white;
 }
